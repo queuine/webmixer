@@ -1,0 +1,8 @@
+# python bytecode
+__pycache__/
+*.py[cod]
+# python lints
+.mypy_cache/
+# python virtual env.
+/venv/
+

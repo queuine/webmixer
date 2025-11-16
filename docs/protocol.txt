@@ -1,0 +1,32 @@
+MAP/1.0 protocol
+
+The dynamic mapping is done according to MAP/1.0 protocol described here,
+and an example client implementation is the client/setmap.py script.
+
+It goes in two steps.
+First the client asks for a mapping:
+
+MAP/1.0 SET DIR
+/directory/to/be/mapped
+
+Server replies with asking for (short) content of a temporary file,
+to prove that the client has access to local filesystem:
+
+MAP/1.0 CHALLENGE
+/local/file/with/random/string/inside
+
+The client answers with the file content:
+
+MAP/1.0 ANSWER
+the_read_string_from_the_asked_file
+
+And the server sends back URL that maps to the asked directory.
+
+MAP/1.0 OK 201
+/the/mapped/URL
+
+When it happens that the client does not follow the protocol,
+the server sends a line that ends with status code and starts with:
+
+MAP/1.0 KO
+

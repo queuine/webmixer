@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "webmixer"
+version = "0.3"
+dependencies = ["wxPython>=4.1"]
+authors = [{name = "Martin Saturka", email = "da42eb2ec67a4355@tangloid.net"}]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[project.urls]
+Homepage = "https://webmixer.tangloid.net"
+Repository = "https://codeberg.org/msat/webmixer/"
+
+[project.scripts]
+webmixer = "webmixer.__main__:start"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

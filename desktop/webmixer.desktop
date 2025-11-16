@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Webmixer
+StartupWMClass=webmixer.py
+Exec=webmixer
+Comment=Webmixer: personal webserver
+Terminal=false
+Icon=icon192.png
+Type=Application
+Categories=Internet;Utilities;

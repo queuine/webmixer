@@ -1,0 +1,30 @@
+Startup options
+
+Locations of files with static and dynamic mappings can be set by:
+--mapping-path FILE_PATH for the statically set mapping,
+--session-path FILE_PATH for the dynamically set mapping.
+
+Ports for the dynamic mapping and for web serving can be set by:
+--port-setting PORT (12001 by default)
+--port-serving PORT (12000 by default)
+--port-serving-random
+
+Static or dynamic mappings can be disabled by:
+--no-static-mapping
+--no-dynamic-mapping
+
+Using the dynamic mapping without saving it into a session file:
+--no-session
+Restoring the dynamic mapping from the last session at startup:
+--restore-session
+
+Logging for the web serving and for setting the dynamic mapping
+can be switched on by:
+--log-web
+--log-set
+
+Other startup options are the common options:
+--help
+--version
+--license
+

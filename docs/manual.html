@@ -1,0 +1,63 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Webmixer description</title>
+<style>
+.tagging-pre {
+  background: #f0f0ff;
+  white-space: pre-wrap !important;
+  font-size: 110%;
+}
+</style>
+</head><body>
+<p>
+<b>Webmixer</b>
+</p><p>
+<a href="https://webmixer.tangloid.net/" title="Webmixer: personal webserver" target="_blank">Webmixer</a>
+is a secure personal webserver with both static and dynamic mapping of local directories.
+</p><p>
+<b>URL mapping</b><br>
+Starting parts of URLs requested by web browsers (or generally by web clients) are matched against the mapped URLs.
+The first mapping that fits for a given URL is used for translating the requested URL to the respective local directory.
+If e.g. a mapping is:<br>
+<pre>
+/project/ =&gt; /local/dir/
+</pre>
+then e.g. URL <tt>/project/results/page.html</tt> is translated to the <tt>/local/dir/results/page.html</tt> file.<br>
+The dynamic mappings are tested first, because they are created to not collide with other mappings.
+Then the static mappings are tested, from the first (top) to the last (bottom) ones.
+If no fitting mapping is found, no local file is served.<br>
+Directories and html files can be accessed directly,
+with files of other types being served from within html files only.
+</p><p>
+<b>Example use</b><br>
+Some Javascript libraries, e.g. for WebGL, cannot be loaded from html files read directly from filesystem.
+It means that local use of such Javascript libraries requires to have a local web server running.<br>
+Since html files with use of WebGL can be located in disparate directories,
+it requires either to have respective projects covered overall by a local web server, making it insecure,
+or to have a web server where disparate directories can be put virtually together.
+Webmixer allows such virtual aligning of disparate directories.<br>
+Locally installed software can even dynamically ask Webmixer to make such mappings
+when a user accesses html files that require serving via a web server.
+<a href="https://minima.tangloid.net">TGM Minima</a> is such a software that supports
+dynamic mapping via Webmixer.
+</p><p>
+<b>Security</b><br>
+The Webmixer web server only serves GET requests and only on localhost.
+It limits the possibilities of attacks to software present on user's computer.
+Web browsers can present such attacks, since a page loaded from a remote server can still make requests to localhost.<br>
+To avoid attacks from malicious web pages, the file serving by Webmixer disallows cross-origin resource sharing.
+The "Host" request header is checked to avoid situations when an attacker sets its DNS to 127.0.0.1 to confuse web browsers.
+Along with that, the "Referer" header is required and checked for all but html pages,
+so that attacking web pages can load at most html pages, but not Javascript files nor other resources.
+Even if a html page gets loaded by an attacker, it cannot be read by it,
+because the "X-Content-Type-Options" header is sent to prevent the served html pages to be
+interpreted as e.g. Javascript, thus avoiding any leaking.<br>
+Directory listing is supported, but only with presenting subdirectories and html files,
+i.e. not Javascript files, images, etc. to limit any possibility of leaks based on complete listings.
+Hidden directories and files (tested under Linux) are not served at all.<br>
+The process of dynamic setting requires the clients to have access to local file system, making it secure,
+since malicious web pages do not have such an access.
+</p><p>
+Webmixer website: <a href="https://webmixer.tangloid.net/" title="Webmixer: personal webserver" target="_blank">webmixer.tangloid.net</a>
+</p>
+</body></html>
