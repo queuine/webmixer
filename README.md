@@ -36,4 +36,4 @@ Webmixer uses two ports: for the dynamic mapping (12001 by default)
 and for the web serving (12000 by default).
 It can be set by startup options too.
 
-**The project site is at [Tangloid](https://webmixer.tangloid.net) and its repository is hosted at [Codeberg](https://codeberg.org/msat/webmixer/).**
+**The project site is at [Tangloid](https://webmixer.tangloid.net) and its repository is hosted at [GitHub](https://github.com/queuine/webmixer).**
